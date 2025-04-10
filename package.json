@@ -1,10 +1,11 @@
 {
   "name": "desafio-tecnico-longlifenutri",
   "version": "1.0.0",
+  "type": "module",
   "description": "Repositório para armazenar o desafio técnico para o estágio fullstack na Long Life Nutri",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --watch ./data_scraping/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/rafael-rodrigues01/desafio-tecnico-longlifenutri#readme",
   "dependencies": {
     "axios": "^1.8.4",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "jsdom": "^26.0.0"
   }
