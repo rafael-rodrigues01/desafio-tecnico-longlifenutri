@@ -84,7 +84,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
 - **Frontend:**
   - HTML, CSS e JavaScript
-  - [Axios CDN](https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js)
+  - [Axios CDN](https://www.jsdelivr.com/package/npm/axios)
 
 ---
 
