@@ -1,38 +1,24 @@
-const axios = require('axios');
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
+// realiza as importações necessárias
+import express from 'express';
+import route from './routes.js';
+import cors from 'cors';
 
-//função de teste para buscar os dados da url do site da amazon utilizando o axios
+// cria uma instância do express
+const app = express();
 
-const generateUrl = (searchText) => `https://www.amazon.com/s?k=${searchText}&crid=26UOD2FLHP794`;
+//usa o cors para permitir requisições de outros domínios
+app.use(cors());
 
-const getData = async (url) => {
-  try {
-    const response = await axios.get(url, {
-      headers: {
-        Accept: 'application/json, text/javascript, */*; q=0.01',
-        Host: 'www.amazon.com.br',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0'
-      }
-    });
-    
-    console.log(`dados: ${response.data}`);
-    const dom = new JSDOM(response.data);
-    const document = dom.window.document;
-     // Exibe o HTML completo da página
-    
-  }
-  catch (error) {
-    console.error(`Error fetching data from ${url}:`, error);
-    throw error;
-  }
-}
+// usa o express.json() para analisar o corpo das requisições como JSON
+app.use(express.json());
 
-//como estou usando async/await, não preciso usar o then e o catch 
-const fetchData = async () => {
-  const url = generateUrl('radio');
-  const data = await getData(url);
-  // console.log(data);
-};
+// usa o route para definir as rotas e manter a organização do código
+app.use(route);
 
-fetchData();
+// define a porta do servidor
+const PORT = 3000;
+
+// inicia o servidor na porta definida
+app.listen(PORT, () => {
+  console.log(`Server is running at port: http://localhost:${PORT}`);
+});
