@@ -27,18 +27,23 @@ button.addEventListener('click', event => {
             image.src = item.imageUrl; // Define a URL da imagem se for válida
           }
 
-          // Cria a o numero de estrelas
-          const rating = document.createElement('p');
-          rating.textContent = `rating: ⭐ ${item.rating}`;
-
-          const reviews = document.createElement('p');
-          reviews.textContent = `reviews: ${item.reviews}`;
-
-          // Adiciona os elementos ao contêiner do item
           itemContainer.appendChild(title);
           itemContainer.appendChild(image);
-          itemContainer.appendChild(rating);
-          itemContainer.appendChild(reviews);
+
+          // Cria um footer para o rating e reviews
+          const footer = document.createElement('div');
+          footer.classList.add('card-footer');
+
+          const rating = document.createElement('span');
+          rating.textContent = `⭐ ${item.rating}`;
+
+          const reviews = document.createElement('span');
+          reviews.textContent = `${item.reviews} reviews`;
+
+          footer.appendChild(rating);
+          footer.appendChild(reviews);
+          itemContainer.appendChild(footer);
+
 
           // Adiciona o contêiner do item ao cardContainer
           cardContainer.appendChild(itemContainer);
