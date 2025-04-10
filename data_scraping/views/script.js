@@ -38,7 +38,7 @@ button.addEventListener('click', event => {
           rating.textContent = `⭐ ${item.rating}`;
 
           const reviews = document.createElement('span');
-          reviews.textContent = `${item.reviews} reviews`;
+          reviews.textContent = item.reviews;
 
           footer.appendChild(rating);
           footer.appendChild(reviews);
